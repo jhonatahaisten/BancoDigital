@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BancoDigital.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace BancoDigital.Infrastructure.Data
 {
-    class BancoDigitalContexto
+    public class BancoDigitalContexto : DbContext
     {
+        public BancoDigitalContexto(DbContextOptions<BancoDigitalContexto> options)
+         : base(options)
+        {
+        }
+
+        public DbSet<Account> Account { get; set; }
+       
     }
 }

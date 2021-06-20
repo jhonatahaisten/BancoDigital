@@ -1,16 +1,14 @@
+using BancoDigital.Domain.Repositories;
+using BancoDigital.Domain.Services;
+using BancoDigital.Infrastructure;
+using BancoDigital.Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BancoDigital
 {
@@ -23,18 +21,30 @@ namespace BancoDigital
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var server = Configuration["DbServer"] ?? "localhost";
+            var port = Configuration["DbPort"] ?? "1433";
+            var user = Configuration["DbUser"] ?? "SA";
+            var password = Configuration["Password"] ?? "Funcional2021";
+            var database = Configuration["Database"] ?? "BancoDigitalDb";
+
+            // Add Db context as a service to our application
+            services.AddDbContext<BancoDigitalContexto>(options =>
+            options.UseSqlServer($"Server={server}, {port};Initial Catalog={database};User ID={user};Password={password}"));
+
 
             services.AddControllers();
+
+            services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<IAccountService, AccountService>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BancoDigital", Version = "v1" });
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

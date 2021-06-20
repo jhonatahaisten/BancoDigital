@@ -1,39 +1,43 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using BancoDigital.Domain.Services;
+using BancoDigital.Domain.Entities;
 
 namespace BancoDigital.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
     public class BancoDigitalController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        private readonly IAccountService _iAccountService;
 
-        private readonly ILogger<BancoDigitalController> _logger;
-
-        public BancoDigitalController(ILogger<BancoDigitalController> logger)
+        public BancoDigitalController(IAccountService iAccountService)
         {
-            _logger = logger;
+            _iAccountService = iAccountService;
         }
 
-        [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpPost("criarConta/{conta}")]
+        public ActionResult<string> CreateAccountDigital(int conta)
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+            return _iAccountService.CreateAccount(conta);
         }
+
+        [HttpPut("depositar")]
+        public ActionResult<Account> DepositAccountDigital(AccountWhithdraw accountWhithdraw)
+        {
+            return _iAccountService.DepositAccount(accountWhithdraw);
+        }
+
+        [HttpPut("sacar")]
+        public ActionResult<Account> WhithdrawAccountDigital(AccountWhithdraw accountWhithdraw)
+        {
+            return _iAccountService.WhithdrawAccount(accountWhithdraw);
+        }
+
+        [HttpGet("saldo")]
+        public ActionResult<double> BalanceAccountDigital(AccountWhithdraw accountWhithdraw)
+        {
+            return _iAccountService.BalanceAccount(accountWhithdraw);
+        }
+
     }
 }
