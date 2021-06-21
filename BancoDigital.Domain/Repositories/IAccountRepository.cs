@@ -2,7 +2,7 @@
 
 namespace BancoDigital.Domain.Repositories
 {
-    public interface IAccountRepository
+    public interface IAccountRepository 
     {
         void SetAccount(Account account);
         Account GetAccount(int account);

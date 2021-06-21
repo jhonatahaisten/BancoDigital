@@ -13,7 +13,7 @@ namespace BancoDigital.Domain.Services
             _iAccountRepository = iAccountRepository;
         }
 
-        public ActionResult<string> CreateAccount(int accountNumber)
+        public string CreateAccount(int accountNumber)
         {
             var contaValida = _iAccountRepository.GetAccount(accountNumber);
 
@@ -29,7 +29,7 @@ namespace BancoDigital.Domain.Services
                 return "Conta Criada: " + novaConta.Conta;
             }
 
-            return "Conta já existente!";
+            return "Conta já existente.";
         }
 
         public ActionResult<Account> DepositAccount(AccountWhithdraw accountWhithdraw)

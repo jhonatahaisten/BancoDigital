@@ -5,7 +5,7 @@ namespace BancoDigital.Domain.Services
 {
     public interface IAccountService
     {
-        ActionResult<string> CreateAccount(int account);
+        string CreateAccount(int account);
         ActionResult<Account> DepositAccount(AccountWhithdraw accountWhithdraw);
         ActionResult<Account> WhithdrawAccount(AccountWhithdraw accountWhithdraw);
         ActionResult<double> BalanceAccount(AccountWhithdraw AccountWhithdraw);  

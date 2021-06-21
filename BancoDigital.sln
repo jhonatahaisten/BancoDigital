@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BancoDigital.Domain", "Banc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BancoDigital.Infrastructure", "BancoDigital.Infrastructure\BancoDigital.Infrastructure.csproj", "{0FDDAA30-E1AD-4C90-A278-5A91D8774A42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteBancoDigital", "TesteBancoDigital\TesteBancoDigital.csproj", "{63CD2414-F319-4D47-B3EC-319673685101}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0FDDAA30-E1AD-4C90-A278-5A91D8774A42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FDDAA30-E1AD-4C90-A278-5A91D8774A42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FDDAA30-E1AD-4C90-A278-5A91D8774A42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63CD2414-F319-4D47-B3EC-319673685101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63CD2414-F319-4D47-B3EC-319673685101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63CD2414-F319-4D47-B3EC-319673685101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63CD2414-F319-4D47-B3EC-319673685101}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
