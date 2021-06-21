@@ -41,18 +41,16 @@ Rode a aplicação de forma manual no VS
 
 # Testes unitários
 
-Para realizar os testes unitários, rode o comando abaixo, onde será executado todos os testes na aplicação e ao final será gerado um xml:
+Para realizar os testes unitários, rode o comando abaixo no diretório do projeto "TesteBancoDigital", onde será executado todos os testes na aplicação e ao final será gerado um xml:
 ```console
 dotnet test --collect:"XPlat Code Coverage" --settings runsettings.xml
 ```
 O resultado dos testes será criado no diretório do projeto ...\BancoDigital\TesteBancoDigital\TestResults
 
-Copie o caminho completo "coverage.cobertura.xml", a qual foi gerado no diretório do projeto de testes, em seguida, rode o comando conforme o exemplo abaixo, substituindo os campos com os caminhos da sua máquina:
+Copie o caminho completo do "coverage.cobertura.xml", a qual foi gerado no diretório do projeto de testes, em seguida, rode o comando conforme o exemplo abaixo, substituindo os campos com os caminhos da sua máquina:
 ```console
 dotnet C:\Users\Jhonata\.nuget\packages\reportgenerator\4.8.10\tools\net5.0\ReportGenerator.dll "-reports:C:\Users\Jhonata\source\repos\BancoDigital\TesteBancoDigital\TestResults\fca46ab9-080c-449a-ae52-7401cbf9f79b\coverage.cobertura.xml" "-targetdir:C:\coveragereport"
 ```	
-Agora basta acessar o resultado dos teste pelo index.html no caminho 
+Agora basta acessar o resultado dos testes pelo index.html no caminho C:\coveragereport\index.html
 
-```console
-C:\coveragereport\index.html
-```	
+
