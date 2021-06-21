@@ -37,7 +37,7 @@ update-database
 
 Rode a aplicação de forma manual no VS
 
-**Para facilitar os testes, foi enviado uma colection do Postman.**
+**Para facilitar os testes, foi enviado uma colection do Postman por e-mail.**
 
 # Testes unitários
 
