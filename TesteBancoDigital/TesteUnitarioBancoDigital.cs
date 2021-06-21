@@ -76,7 +76,7 @@ namespace TesteBancoDigital
         {
             IAccountRepository iAccountRepository = new AccountRepository(_bancoDigitalContexto);
             var teste = new AccountService(iAccountRepository);
-
+            CreateAccount(45);
             Assert.StartsWith("Conta já existente.", teste.CreateAccount(45));
         }
 
@@ -84,16 +84,29 @@ namespace TesteBancoDigital
         public void TestDepositAccountSuccess()
         {
             int numberAccount = 999;
-            CreateAccount(numberAccount);
+            CreateAccount(numberAccount);          
+
+            AccountWhithdraw accountWhithdraw = new AccountWhithdraw { Conta = numberAccount, Valor = 1000 };
 
             IAccountRepository iAccountRepository = new AccountRepository(_bancoDigitalContexto);
-            var teste = new AccountService(iAccountRepository);
+            var accountService = new AccountService(iAccountRepository);
 
-            AccountWhithdraw conta = new AccountWhithdraw { Conta = 998, Valor = 1000};   
+            var teste = accountService.DepositAccount(accountWhithdraw);
 
-            Assert.Null(teste.DepositAccount(conta).Value);
+            Assert.True(teste.Value.Saldo == 1000);    
+        }
 
+        [Fact]
+        public void TestDepositAccountNotSuccess()
+        {        
+            AccountWhithdraw accountWhithdraw = new AccountWhithdraw { Valor = 1000 };
 
+            IAccountRepository iAccountRepository = new AccountRepository(_bancoDigitalContexto);
+            var accountService = new AccountService(iAccountRepository);
+
+            var teste = accountService.DepositAccount(accountWhithdraw);
+
+            Assert.Null(teste.Value);
         }
 
     }
