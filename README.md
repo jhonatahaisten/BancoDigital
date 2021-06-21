@@ -30,7 +30,7 @@ docker run -e "ACCEPT_EULA=Y" -e 'MSSQL_PID=Express' -e "SA_PASSWORD=Funcional20
 ```
 
 
-Abra o "Package Manager Console" e rode o comando abaixo:
+Abra o "Package Manager Console" e rode o comando abaixo no diretório do projeto "BancoDigital.Infrastructure":
 ```console
 update-database
 ```
